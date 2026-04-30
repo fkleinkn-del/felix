@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://consent.cookiebot.com https://consentcdn.cookiebot.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: http://imgsct.cookiebot.com https://imgsct.cookiebot.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://region1.analytics.google.com https://stats.g.doubleclick.net https://consent.cookiebot.com https://consentcdn.cookiebot.com; frame-src 'self' https://www.googletagmanager.com https://consentcdn.cookiebot.com; base-uri 'none'; object-src 'none';" />
+
+  <title>Felix Debugger – GA4 Debugger Chrome Extension | Google Analytics 4</title>
+  <meta name="description" content="Felix Debugger is the free GA4 Debugger Chrome Extension. Decode, validate and inspect Google Analytics 4 events in real time — directly in DevTools. Built for analysts, developers and QA teams." />
+  <meta name="keywords" content="GA4 Debugger, Google Analytics 4 Debugger, Felix Debugger, Chrome Extension, GA4 Chrome Extension, Analytics QA, Event Inspector, Tag Validation, GA4 Event Debugger" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="Felix Kleinknecht" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Felix Debugger" />
+  <meta property="og:url" content="https://felix-debugger.de/" />
+  <meta property="og:title" content="Felix Debugger – GA4 Debugger Chrome Extension" />
+  <meta property="og:description" content="Decode, validate and inspect Google Analytics 4 events in real time. Free Chrome Extension for analysts, developers and QA teams." />
+  <meta property="og:image" content="https://felix-debugger.de/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Felix Debugger – GA4 Debugger Chrome Extension" />
+  <meta name="twitter:description" content="Decode, validate and inspect Google Analytics 4 events in real time. Free Chrome Extension for analysts, developers and QA teams." />
+  <meta name="twitter:image" content="https://felix-debugger.de/assets/og-image.png" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/Felix_Debugger_F3L2_Light_512_transparent.svg" />
+  <link rel="apple-touch-icon" href="assets/Felix_Debugger_F3L2_Light_512.svg" />
+  <link rel="canonical" href="https://felix-debugger.de/" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+  <!-- DNS prefetch for external resources -->
+  <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="//consent.cookiebot.com" />
+  <link rel="dns-prefetch" href="//www.google-analytics.com" />
+
+  <!-- Preload primary font weights -->
+  <link rel="preload" href="assets/fonts/Geist-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/Geist-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Cookiebot -->
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="8647a094-df0e-4e92-948e-bc080b73de7f" data-blockingmode="auto" type="text/javascript"></script>
+  <!-- End Cookiebot -->
+
+  <!-- Google Consent Mode defaults -->
+  <script data-cookieconsent="ignore">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("consent", "default", {
+      ad_personalization: "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      analytics_storage: "denied",
+      functionality_storage: "denied",
+      personalization_storage: "denied",
+      security_storage: "granted",
+      wait_for_update: 500,
+    });
+    gtag("set", "ads_data_redaction", true);
+    gtag("set", "url_passthrough", false);
+  </script>
+  <!-- End Google Consent Mode defaults -->
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NXZNCG85');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- JSON-LD: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Felix Debugger",
+    "url": "https://felix-debugger.de/",
+    "applicationCategory": "DeveloperApplication",
+    "applicationSubCategory": "Analytics Debugger",
+    "operatingSystem": "Chrome, Chromium, Microsoft Edge",
+    "description": "Free GA4 Debugger Chrome Extension. Decode, validate and inspect Google Analytics 4 events in real time directly in DevTools. Built for analysts, developers and QA teams.",
+    "screenshot": "https://felix-debugger.de/assets/og-image.png",
+    "image": "https://felix-debugger.de/assets/og-image.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Felix Kleinknecht"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Felix Kleinknecht"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Felix Debugger",
+    "url": "https://felix-debugger.de/"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZNCG85"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- ─────────────────────────────  HEADER  ───────────────────────────── -->
+  <header class="nav" id="nav" role="banner">
+    <div class="nav__inner">
+      <a href="#top" class="nav__brand" aria-label="Felix Debugger">
+        <img src="assets/Felix_Debugger_F3L2_Light_512_transparent.svg" alt="" class="nav__logo" width="28" height="28" />
+        <span>Felix Debugger</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#features" data-i18n="nav.features">Features</a>
+        <a href="#how" data-i18n="nav.how">How it works</a>
+        <a href="#privacy" data-i18n="nav.privacy">Privacy</a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-toggle__btn" data-lang-btn="en">EN</button>
+        <span class="lang-toggle__sep" aria-hidden="true">|</span>
+        <button class="lang-toggle__btn" data-lang-btn="de">DE</button>
+      </div>
+      <a href="#" class="btn btn--small" data-store-link><span data-i18n="nav.cta">Add to Chrome</span></a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ─────────────────────────────  HERO  ───────────────────────────── -->
+    <section class="hero" aria-labelledby="hero-title" data-ga-section="hero" data-ga-name="extension_intro">
+      <div class="container hero__inner">
+        <p class="eyebrow reveal" data-i18n="hero.eyebrow">GA4 Debugger · Chrome Extension</p>
+        <h1 id="hero-title" class="display reveal" data-delay="60" data-i18n-html="hero.h1">
+          See every GA4 event.<br />
+          <span class="text-gradient">Instantly.</span>
+        </h1>
+        <p class="lede reveal" data-delay="120" data-i18n="hero.lede">
+          Real-time debugging for Google Analytics 4. Decode, validate and inspect every request, without leaving your browser.
+        </p>
+        <div class="hero__cta reveal" data-delay="180">
+          <a href="#" class="btn btn--primary" data-store-link>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M12 2a10 10 0 0 1 8.66 5L12 12 3.34 7A10 10 0 0 1 12 2Z M12 22a10 10 0 0 1-8.66-5L12 12 3.34 7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <span data-i18n="hero.cta.primary">Add to Chrome</span>
+          </a>
+          <a href="#features" class="btn btn--ghost" data-i18n="hero.cta.ghost">See it in action ›</a>
+        </div>
+
+        <div class="hero__visual reveal" data-delay="240" aria-hidden="true">
+          <div class="device device--tool">
+            <div class="device__chrome">
+              <span></span><span></span><span></span>
+              <div class="device__url">devtools · Felix Debugger</div>
+            </div>
+            <div class="device__body">
+              <!-- Tool Mock: Decoded Parameters view -->
+              <div class="tool">
+                <div class="tool__header">
+                  <div class="tool__brand">
+                    <img src="assets/Felix_Debugger_F3_Dark_512_transparent.svg" alt="" />
+                    <span>Felix Debugger</span>
+                    <span class="tool__heart">for analytics enthusiasts with
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </span>
+                  </div>
+                  <div class="tool__actions">
+                    <input class="tool__filter" placeholder="Filter (supports page_view|purchase or /regex/)…" />
+                    <button class="tool__btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="m21 3-7 7"/><path d="M8 21H3v-5"/><path d="m3 21 7-7"/></svg>Compare</button>
+                    <button class="tool__btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>Perf</button>
+                    <button class="tool__btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Export</button>
+                    <span class="tool__count">42 requests</span>
+                  </div>
+                </div>
+                <div class="tool__stats">
+                  <span class="stat-chip"><span class="event-badge page_view badge-no-margin">page_view</span> <span class="stat-count">4</span></span>
+                  <span class="stat-chip"><span class="event-badge view_item badge-no-margin">view_item</span> <span class="stat-count">2</span></span>
+                  <span class="stat-chip"><span class="event-badge add_to_cart badge-no-margin">add_to_cart</span> <span class="stat-count">3</span></span>
+                  <span class="stat-chip"><span class="event-badge purchase badge-no-margin">purchase</span> <span class="stat-count">1</span></span>
+                  <span class="stat-chip"><span class="event-badge user_engagement badge-no-margin">user_engagement</span> <span class="stat-count">8</span></span>
+                </div>
+                <div class="tool__main">
+                  <div class="tool__list">
+                    <div class="tool__list-head">
+                      <span class="col-check"></span><span class="col-time">Time</span>
+                      <span class="col-status"></span><span class="col-event">Event</span>
+                      <span class="col-tid">Measurement ID</span><span class="col-page">Page</span>
+                    </div>
+                    <div class="tool__rows">
+                      <div class="tool__row">
+                        <span class="col-check"></span><span class="col-time">10:42:01</span>
+                        <span class="col-status"><span class="status-dot ok"></span></span>
+                        <span class="col-event"><span class="event-badge page_view">page_view</span></span>
+                        <span class="col-tid">G-Y5ZVLRFK9Z</span><span class="col-page">/</span>
+                      </div>
+                      <div class="tool__row">
+                        <span class="col-check"></span><span class="col-time">10:42:08</span>
+                        <span class="col-status"><span class="status-dot ok"></span></span>
+                        <span class="col-event"><span class="event-badge view_item">view_item</span></span>
+                        <span class="col-tid">G-Y5ZVLRFK9Z</span><span class="col-page">/products/gloves</span>
+                      </div>
+                      <div class="tool__row">
+                        <span class="col-check"></span><span class="col-time">10:42:14</span>
+                        <span class="col-status"><span class="status-dot warn"></span></span>
+                        <span class="col-event"><span class="event-badge add_to_cart">add_to_cart</span></span>
+                        <span class="col-tid">G-Y5ZVLRFK9Z</span><span class="col-page">/products/gloves</span>
+                      </div>
+                      <div class="tool__row selected">
+                        <span class="col-check"></span><span class="col-time">10:42:31</span>
+                        <span class="col-status"><span class="status-dot ok"></span></span>
+                        <span class="col-event"><span class="event-badge purchase">purchase</span></span>
+                        <span class="col-tid">G-Y5ZVLRFK9Z</span><span class="col-page">/checkout/success</span>
+                      </div>
+                      <div class="tool__row">
+                        <span class="col-check"></span><span class="col-time">10:42:32</span>
+                        <span class="col-status"><span class="status-dot ok"></span></span>
+                        <span class="col-event"><span class="event-badge user_engagement">user_engagement</span></span>
+                        <span class="col-tid">G-Y5ZVLRFK9Z</span><span class="col-page">/checkout/success</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tool__detail">
+                    <div class="tool__tabs-wrap">
+                      <nav class="tool__tabs">
+                        <button class="tool__tab is-active">Decoded Parameters</button>
+                        <button class="tool__tab">Validation <span class="tool__tab-badge tool__tab-badge--ok"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></button>
+                        <button class="tool__tab">Consent</button>
+                        <button class="tool__tab">E-Commerce</button>
+                        <button class="tool__tab">Raw URL</button>
+                      </nav>
+                    </div>
+                    <div class="tool__body">
+                      <div class="tool__event-acc">
+                        <div class="tool__event-acc-head">
+                          <span class="tool__acc-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+                          <span class="event-badge purchase badge-no-margin">purchase</span>
+                          <span class="tool__acc-name">Event 1</span>
+                          <span class="tool__acc-count">4 params</span>
+                        </div>
+                        <div class="tool__event-acc-body">
+                          <div class="param-group">
+                            <div class="param-group-title">Event</div>
+                            <div class="param-row"><span class="param-key">Event Name <span class="param-raw-key">(en)</span></span><span class="param-value">purchase</span></div>
+                            <div class="param-row"><span class="param-key">Transaction ID <span class="param-raw-key">(ep.transaction_id)</span></span><span class="param-value">T_12345</span></div>
+                            <div class="param-row"><span class="param-key">Value <span class="param-raw-key">(epn.value)</span></span><span class="param-value">79.90</span></div>
+                            <div class="param-row"><span class="param-key">Currency <span class="param-raw-key">(ep.currency)</span></span><span class="param-value">EUR</span></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="param-group">
+                        <div class="param-group-title">Page</div>
+                        <div class="param-row"><span class="param-key">Document Location <span class="param-raw-key">(dl)</span></span><span class="param-value">/checkout/success</span></div>
+                        <div class="param-row"><span class="param-key">Document Referrer <span class="param-raw-key">(dr)</span></span><span class="param-value">/checkout</span></div>
+                        <div class="param-row"><span class="param-key">Session ID <span class="param-raw-key">(sid)</span></span><span class="param-value">1714312081</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tool__footer">
+                  <span>© Felix Kleinknecht · Non-commercial use only</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────  PROBLEM → SOLUTION  ─────────────────────── -->
+    <section class="section section--dark" aria-labelledby="ps-title" data-ga-section="solution_statement" data-ga-name="ga4_debugging_problem">
+      <div class="container narrow">
+        <p class="eyebrow eyebrow--light reveal" data-i18n="ps.eyebrow">The problem</p>
+        <h2 id="ps-title" class="headline reveal" data-delay="60" data-i18n-html="ps.h2">
+          GA4 debugging is noisy, slow,<br />and scattered across tabs.
+        </h2>
+        <p class="lede lede--light reveal" data-delay="140" data-i18n="ps.lede">
+          Felix Debugger pulls every event, parameter and consent signal into one calm, readable timeline, right inside your DevTools.
+        </p>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────  FEATURES  ───────────────────────────── -->
+    <section class="section" id="features" aria-labelledby="features-title" data-ga-section="features" data-ga-name="feature_overview">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow reveal" data-i18n="feat.eyebrow">Features</p>
+          <h2 id="features-title" class="headline reveal" data-delay="60" data-i18n-html="feat.h2">
+            Everything you need.<br /><span class="text-muted">Nothing you don't.</span>
+          </h2>
+        </header>
+
+        <div class="grid grid--3">
+          <article class="card reveal">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h4l2-7 4 14 2-7h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 data-i18n="feat.1.h3">Real-time debugging</h3>
+            <p data-i18n="feat.1.p">Watch GA4 events stream in the moment they fire. No refresh, no guesswork.</p>
+          </article>
+
+          <article class="card reveal" data-delay="60">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="20" cy="12" r="2" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <h3 data-i18n="feat.2.h3">Timeline &amp; insights</h3>
+            <p data-i18n="feat.2.p">A clean, chronological view of every interaction with parameters, user properties and context.</p>
+          </article>
+
+          <article class="card reveal" data-delay="120">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 data-i18n="feat.3.h3">Validation &amp; QA</h3>
+            <p data-i18n="feat.3.p">Catch missing parameters, broken naming and invalid values before they reach production.</p>
+          </article>
+
+          <article class="card reveal" data-delay="60">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 4v16M16 4v16M4 8h8M12 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h3 data-i18n="feat.4.h3">Event comparison</h3>
+            <p data-i18n="feat.4.p">Diff two events side-by-side. Spot inconsistencies between staging and production in seconds.</p>
+          </article>
+
+          <article class="card reveal" data-delay="120">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 5h2l2.5 11.5a2 2 0 0 0 2 1.5h7.5a2 2 0 0 0 2-1.5L21 8H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="21" r="1.4" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="21" r="1.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <h3 data-i18n="feat.5.h3">E-commerce ready</h3>
+            <p data-i18n="feat.5.p">Inspect items, currencies, transaction IDs and the full purchase funnel, fully expanded.</p>
+          </article>
+
+          <article class="card reveal" data-delay="180">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h10M4 12h6M4 18h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="17" cy="6" r="2" stroke="currentColor" stroke-width="1.6"/><circle cx="13" cy="12" r="2" stroke="currentColor" stroke-width="1.6"/><circle cx="19" cy="18" r="2" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <h3 data-i18n="feat.6.h3">Advanced tools</h3>
+            <p data-i18n="feat.6.p">Filter, search and export. Inspect Consent Mode signals and page performance in the same view.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────  SHOWCASE  ───────────────────────────── -->
+    <section class="section section--feature" aria-labelledby="showcase-title" data-ga-section="showcase" data-ga-name="tool_preview">
+      <div class="container narrow">
+        <p class="eyebrow reveal" data-i18n="show.eyebrow">Built for clarity</p>
+        <h2 id="showcase-title" class="headline reveal" data-delay="60" data-i18n-html="show.h2">
+          Every event.<br /><span class="text-gradient">Decoded beautifully.</span>
+        </h2>
+        <p class="lede reveal" data-delay="120" data-i18n="show.lede">
+          Parameters, user properties, consent state and timing, laid out in a way that makes sense at a glance.
+        </p>
+      </div>
+
+      <div class="container">
+        <div class="showcase reveal" data-delay="60" data-ga-section="showcase" data-ga-name="tool_mock_full_funnel">
+          <div class="showcase__frame showcase__frame--tool">
+            <!-- Tool Mock: full funnel timeline -->
+            <div class="tool" aria-hidden="true">
+              <div class="tool__header">
+                <div class="tool__brand">
+                  <img src="assets/Felix_Debugger_F3_Dark_512_transparent.svg" alt="" />
+                  <span>Felix Debugger</span>
+                  <span class="tool__heart">for analytics enthusiasts with <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+                </div>
+                <div class="tool__actions">
+                  <input class="tool__filter" placeholder="Filter (supports page_view|purchase or /regex/)…" />
+                  <button class="tool__btn">Compare</button>
+                  <button class="tool__btn">Perf</button>
+                  <button class="tool__btn">Export</button>
+                  <span class="tool__count">42 requests</span>
+                </div>
+              </div>
+              <div class="tool__stats">
+                <span class="stat-chip"><span class="event-badge page_view badge-no-margin">page_view</span> <span class="stat-count">4</span></span>
+                <span class="stat-chip"><span class="event-badge scroll badge-no-margin">scroll</span> <span class="stat-count">6</span></span>
+                <span class="stat-chip"><span class="event-badge default badge-no-margin">view_item_list</span> <span class="stat-count">2</span></span>
+                <span class="stat-chip"><span class="event-badge view_item badge-no-margin">view_item</span> <span class="stat-count">3</span></span>
+                <span class="stat-chip"><span class="event-badge add_to_cart badge-no-margin">add_to_cart</span> <span class="stat-count">3</span></span>
+                <span class="stat-chip"><span class="event-badge begin_checkout badge-no-margin">begin_checkout</span> <span class="stat-count">1</span></span>
+                <span class="stat-chip"><span class="event-badge purchase badge-no-margin">purchase</span> <span class="stat-count">1</span></span>
+                <span class="stat-chip"><span class="event-badge user_engagement badge-no-margin">user_engagement</span> <span class="stat-count">8</span></span>
+              </div>
+              <div class="tool__main">
+                <div class="tool__list">
+                  <div class="tool__list-head">
+                    <span class="col-check"></span><span class="col-time">Time</span>
+                    <span class="col-status"></span><span class="col-event">Event</span>
+                    <span class="col-tid">Measurement ID</span><span class="col-page">Page</span>
+                  </div>
+                  <div class="tool__rows">
+                    <div class="tool__row"><span class="col-check"></span><span class="col-time">10:42:01</span><span class="col-status"><span class="status-dot ok"></span></span><span class="col-event"><span class="event-badge page_view">page_view</span></span><span class="col-tid">G-Y5ZVLRFK9Z</span><span class="col-page">/</span></div>
+                    <div class="tool__row"><span class="col-check"></span><span class="col-time">10:42:03</span><span class="col-status"><span class="status-dot ok"></span></span><span class="col-event"><span class="event-badge scroll">scroll</span></span><span class="col-tid">G-Y5ZVLRFK9Z</span><span class="col-page">/</span></div>
+                    <div class="tool__row"><span class="col-check"></span><span class="col-time">10:42:08</span><span class="col-status"><span class="status-dot ok"></span></span><span class="col-event"><span class="event-badge default">view_item_list</span></span><span class="col-tid">G-Y5ZVLRFK9Z</span><span class="col-page">/products</span></div>
+                    <div class="tool__row selected"><span class="col-check"></span><span class="col-time">10:42:14</span><span class="col-status"><span class="status-dot ok"></span></span><span class="col-event"><span class="event-badge view_item">view_item</span></span><span class="col-tid">G-Y5ZVLRFK9Z</span><span class="col-page">/products/gloves</span></div>
+                    <div class="tool__row"><span class="col-check"></span><span class="col-time">10:42:21</span><span class="col-status"><span class="status-dot warn"></span></span><span class="col-event"><span class="event-badge add_to_cart">add_to_cart</span></span><span class="col-tid">G-Y5ZVLRFK9Z</span><span class="col-page">/products/gloves</span></div>
+                    <div class="tool__row"><span class="col-check"></span><span class="col-time">10:42:28</span><span class="col-status"><span class="status-dot ok"></span></span><span class="col-event"><span class="event-badge begin_checkout">begin_checkout</span></span><span class="col-tid">G-Y5ZVLRFK9Z</span><span class="col-page">/checkout</span></div>
+                    <div class="tool__row"><span class="col-check"></span><span class="col-time">10:42:31</span><span class="col-status"><span class="status-dot ok"></span></span><span class="col-event"><span class="event-badge purchase">purchase</span></span><span class="col-tid">G-Y5ZVLRFK9Z</span><span class="col-page">/checkout/success</span></div>
+                  </div>
+                </div>
+                <div class="tool__detail">
+                  <div class="tool__tabs-wrap">
+                    <nav class="tool__tabs">
+                      <button class="tool__tab is-active">Decoded Parameters</button>
+                      <button class="tool__tab">Validation <span class="tool__tab-badge tool__tab-badge--ok"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></button>
+                      <button class="tool__tab">Consent</button>
+                      <button class="tool__tab">E-Commerce</button>
+                      <button class="tool__tab">Raw URL</button>
+                      <button class="tool__tab">POST Body</button>
+                    </nav>
+                  </div>
+                  <div class="tool__body">
+                    <div class="tool__event-acc">
+                      <div class="tool__event-acc-head">
+                        <span class="tool__acc-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+                        <span class="event-badge view_item badge-no-margin">view_item</span>
+                        <span class="tool__acc-name">Event 1</span>
+                        <span class="tool__acc-count">6 params</span>
+                      </div>
+                      <div class="tool__event-acc-body">
+                        <div class="param-group">
+                          <div class="param-group-title">Event</div>
+                          <div class="param-row"><span class="param-key">Event Name <span class="param-raw-key">(en)</span></span><span class="param-value">view_item</span></div>
+                          <div class="param-row"><span class="param-key">Item ID <span class="param-raw-key">(ep.item_id)</span></span><span class="param-value">SKU-9923-BLK</span></div>
+                          <div class="param-row"><span class="param-key">Item Name <span class="param-raw-key">(ep.item_name)</span></span><span class="param-value">Climbing Gloves</span></div>
+                          <div class="param-row"><span class="param-key">Item Category <span class="param-raw-key">(ep.item_category)</span></span><span class="param-value">Gear / Climbing</span></div>
+                          <div class="param-row"><span class="param-key">Price <span class="param-raw-key">(epn.price)</span></span><span class="param-value">79.90</span></div>
+                          <div class="param-row"><span class="param-key">Currency <span class="param-raw-key">(ep.currency)</span></span><span class="param-value">EUR</span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="param-group">
+                      <div class="param-group-title">Page</div>
+                      <div class="param-row"><span class="param-key">Document Location <span class="param-raw-key">(dl)</span></span><span class="param-value">/products/gloves</span></div>
+                      <div class="param-row"><span class="param-key">Document Referrer <span class="param-raw-key">(dr)</span></span><span class="param-value">/products</span></div>
+                      <div class="param-row"><span class="param-key">Session ID <span class="param-raw-key">(sid)</span></span><span class="param-value">1714312081</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tool__footer"><span>© Felix Kleinknecht · Non-commercial use only</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container narrow narrow--top">
+        <div class="grid grid--2">
+          <div class="showcase showcase--small reveal" data-ga-section="showcase" data-ga-name="tool_mock_validation">
+            <div class="showcase__frame showcase__frame--tool">
+              <!-- Validation Mock -->
+              <div class="tool" aria-hidden="true">
+                <div class="tool__header">
+                  <div class="tool__brand">
+                    <img src="assets/Felix_Debugger_F3_Dark_512_transparent.svg" alt="" />
+                    <span>Felix Debugger</span>
+                  </div>
+                  <div class="tool__actions">
+                    <span class="tool__count">42 requests</span>
+                  </div>
+                </div>
+                <div class="tool__main">
+                  <div class="tool__detail">
+                    <div class="tool__tabs-wrap">
+                      <nav class="tool__tabs">
+                        <button class="tool__tab">Decoded Parameters</button>
+                        <button class="tool__tab is-active">Validation <span class="tool__tab-badge tool__tab-badge--ok"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></button>
+                        <button class="tool__tab">Consent</button>
+                        <button class="tool__tab">E-Commerce</button>
+                      </nav>
+                    </div>
+                    <div class="tool__body">
+                      <div class="param-group">
+                        <div class="param-group-title">purchase · G-Y5ZVLRFK9Z</div>
+                        <div class="val-row">
+                          <span class="val-badge val-badge--ok">✓</span>
+                          <span class="val-row__title">event_name matches schema</span>
+                          <span class="val-row__hint">purchase</span>
+                        </div>
+                        <div class="val-row">
+                          <span class="val-badge val-badge--ok">✓</span>
+                          <span class="val-row__title">transaction_id present</span>
+                          <span class="val-row__hint">required</span>
+                        </div>
+                        <div class="val-row">
+                          <span class="val-badge val-badge--ok">✓</span>
+                          <span class="val-row__title">currency is ISO-4217</span>
+                          <span class="val-row__hint">EUR</span>
+                        </div>
+                        <div class="val-row">
+                          <span class="val-badge val-badge--warn">!</span>
+                          <span class="val-row__title">value should be numeric</span>
+                          <span class="val-row__hint">got "79,90"</span>
+                        </div>
+                        <div class="val-row">
+                          <span class="val-badge val-badge--err">×</span>
+                          <span class="val-row__title">items[].item_brand missing</span>
+                          <span class="val-row__hint">recommended</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tool__footer"><span>© Felix Kleinknecht · Non-commercial use only</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase showcase--small reveal" data-delay="80" data-ga-section="showcase" data-ga-name="tool_mock_ecommerce">
+            <div class="showcase__frame showcase__frame--tool">
+              <!-- E-Commerce Mock -->
+              <div class="tool" aria-hidden="true">
+                <div class="tool__header">
+                  <div class="tool__brand">
+                    <img src="assets/Felix_Debugger_F3_Dark_512_transparent.svg" alt="" />
+                    <span>Felix Debugger</span>
+                  </div>
+                  <div class="tool__actions">
+                    <span class="tool__count">EUR 159,80</span>
+                  </div>
+                </div>
+                <div class="tool__main">
+                  <div class="tool__detail">
+                    <div class="tool__tabs-wrap">
+                      <nav class="tool__tabs">
+                        <button class="tool__tab">Decoded Parameters</button>
+                        <button class="tool__tab">Validation <span class="tool__tab-badge tool__tab-badge--ok"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></button>
+                        <button class="tool__tab is-active">E-Commerce</button>
+                        <button class="tool__tab">Raw URL</button>
+                      </nav>
+                    </div>
+                    <div class="tool__body">
+                      <div class="param-group">
+                        <div class="param-group-title">purchase · 3 items · EUR 159,80</div>
+                        <div class="ec-item">
+                          <div class="ec-item__icon"></div>
+                          <div>
+                            <div class="ec-item__name">Climbing Gloves</div>
+                            <div class="ec-item__id">SKU-9923-BLK · Gear / Climbing</div>
+                          </div>
+                          <div class="ec-item__price">€ 79,90</div>
+                        </div>
+                        <div class="ec-item">
+                          <div class="ec-item__icon"></div>
+                          <div>
+                            <div class="ec-item__name">Chalk Bag Pro</div>
+                            <div class="ec-item__id">SKU-1182-RED · Gear / Climbing</div>
+                          </div>
+                          <div class="ec-item__price">€ 49,00</div>
+                        </div>
+                        <div class="ec-item">
+                          <div class="ec-item__icon"></div>
+                          <div>
+                            <div class="ec-item__name">Carabiner Set (3)</div>
+                            <div class="ec-item__id">SKU-3320-SLV · Gear / Hardware</div>
+                          </div>
+                          <div class="ec-item__price">€ 30,90</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tool__footer"><span>© Felix Kleinknecht · Non-commercial use only</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────  HOW IT WORKS  ─────────────────────── -->
+    <section class="section" id="how" aria-labelledby="how-title" data-ga-section="how_it_works" data-ga-name="installation_steps">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow reveal" data-i18n="how.eyebrow">How it works</p>
+          <h2 id="how-title" class="headline reveal" data-delay="60" data-i18n="how.h2">Three steps. That's it.</h2>
+        </header>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__num">01</span>
+            <h3 data-i18n="how.1.h3">Install the extension</h3>
+            <p data-i18n="how.1.p">One click from the Chrome Web Store. No account, no setup.</p>
+          </li>
+          <li class="step reveal" data-delay="80">
+            <span class="step__num">02</span>
+            <h3 data-i18n="how.2.h3">Open DevTools</h3>
+            <p data-i18n="how.2.p">Find the Felix Debugger panel right next to Console and Network.</p>
+          </li>
+          <li class="step reveal" data-delay="160">
+            <span class="step__num">03</span>
+            <h3 data-i18n="how.3.h3">Debug instantly</h3>
+            <p data-i18n="how.3.p">Trigger any event and watch it decoded, validated and timestamped. Live.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────  WHY FELIX  ─────────────────────── -->
+    <section class="section section--why" aria-labelledby="why-title" data-ga-section="why_felix" data-ga-name="product_stats">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow reveal" data-i18n="why.eyebrow">Why Felix Debugger</p>
+          <h2 id="why-title" class="headline reveal" data-delay="60" data-i18n-html="why.h2">
+            One tool.<br /><span class="text-gradient">Better data.</span>
+          </h2>
+        </header>
+
+        <div class="grid grid--4">
+          <div class="why reveal"><strong>10×</strong><span data-i18n="why.1.label">Faster debugging</span></div>
+          <div class="why reveal" data-delay="60"><strong>0</strong><span data-i18n="why.2.label">External tools needed</span></div>
+          <div class="why reveal" data-delay="120"><strong>100%</strong><span data-i18n="why.3.label">Local processing</span></div>
+          <div class="why reveal" data-delay="180"><strong>All-in-one</strong><span data-i18n="why.4.label">QA, validate, export</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────  PRIVACY / TRUST  ─────────────────────── -->
+    <section class="section section--privacy" id="privacy" aria-labelledby="privacy-title" data-ga-section="privacy" data-ga-name="privacy_guarantee">
+      <div class="container narrow">
+        <p class="eyebrow eyebrow--light reveal" data-i18n="priv.eyebrow">Privacy</p>
+        <h2 id="privacy-title" class="headline reveal" data-delay="60" data-i18n-html="priv.h2">
+          Your data never<br />leaves the browser.
+        </h2>
+        <p class="lede lede--light reveal" data-delay="140" data-i18n="priv.lede">
+          Felix Debugger runs entirely on your machine. We don't collect events, we don't track usage, we don't talk to a server. Ever.
+        </p>
+
+        <ul class="privacy-list reveal" data-delay="200">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-i18n="priv.1">No data collection</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24M2 2l20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-i18n="priv.2">No tracking, no analytics</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22.61 16.95A5 5 0 0 0 18 10h-1.26a8 8 0 0 0-7.05-6M5 5a8 8 0 0 0 4 15h9a5 5 0 0 0 1.7-.3M2 2l20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-i18n="priv.3">No external servers</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-i18n="priv.4">Runs 100% locally in your browser</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────  CTA  ─────────────────────── -->
+    <section class="section section--cta" id="install" aria-labelledby="cta-title" data-ga-section="cta" data-ga-name="install_cta">
+      <div class="container narrow text-center">
+        <h2 id="cta-title" class="display reveal" data-i18n-html="cta.h2">
+          Ready to see<br /><span class="text-gradient">cleaner data?</span>
+        </h2>
+        <p class="lede reveal" data-delay="80" data-i18n="cta.lede">Free. No account. One click.</p>
+        <div class="hero__cta hero__cta--center reveal" data-delay="160">
+          <a href="#" class="btn btn--primary btn--large" data-store-link>
+            <span data-i18n="cta.btn">Add to Chrome</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────  COMMUNITY  ─────────────────────── -->
+    <section class="section section--community" aria-labelledby="community-title" data-ga-section="community" data-ga-name="community_engagement">
+      <div class="container narrow text-center">
+        <p class="eyebrow eyebrow--light reveal" data-i18n="com.eyebrow">Community</p>
+        <h2 id="community-title" class="headline reveal" data-delay="60" data-i18n-html="com.h2">
+          Made with love<br /><span class="text-gradient">for analytics.</span>
+        </h2>
+        <p class="lede lede--light reveal" data-delay="120" data-i18n="com.lede">
+          Felix Debugger is a private, non-commercial project — built to make GA4 accessible to everyone. No subscriptions, no paywalls. Just a tool, made with care.
+        </p>
+      </div>
+
+      <div class="container narrow narrow--top">
+        <div class="grid grid--2">
+          <div class="com-card reveal" data-delay="60">
+            <div class="com-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 data-i18n="com.1.h3">Shape what comes next.</h3>
+            <p data-i18n="com.1.p">Have an idea or spotted something? Every piece of feedback gets read and considered. You help build what's next.</p>
+            <a href="mailto:felixdebugger@gmail.com" class="btn btn--ghost com-card__link" data-i18n="com.1.btn" data-ga-label="feedback">Share feedback ›</a>
+          </div>
+          <div class="com-card reveal" data-delay="160">
+            <div class="com-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 data-i18n="com.2.h3">Personal onboarding, on us.</h3>
+            <p data-i18n="com.2.p">New to Felix Debugger? We'll walk you through it — live, together. No slides, no recordings. Just a real conversation.</p>
+            <a href="mailto:felixdebugger@gmail.com" class="btn btn--ghost com-card__link" data-i18n="com.2.btn" data-ga-label="onboarding">Request onboarding ›</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container text-center">
+        <p class="com-love reveal" data-delay="200">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span data-i18n="com.love">With love for the analytics community</span>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─────────────────────────  FOOTER  ─────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__top">
+        <a href="#top" class="nav__brand nav__brand--footer">
+          <img src="assets/Felix_Debugger_F3_Dark_512_transparent.svg" alt="" class="nav__logo" width="24" height="24" />
+          <span>Felix Debugger</span>
+        </a>
+        <nav class="footer__nav" aria-label="Footer">
+          <a href="#features" data-i18n="footer.features">Features</a>
+          <a href="#how" data-i18n="footer.how">How it works</a>
+          <a href="#privacy" data-i18n="footer.privacy">Privacy</a>
+          <a href="impressum.html" data-i18n="footer.impressum">Impressum</a>
+          <a href="datenschutz.html" data-i18n="footer.policy">Privacy Policy</a>
+        </nav>
+      </div>
+      <div class="footer__base">
+        <span>© <span id="year"></span> <span data-i18n="footer.rights">Felix Debugger. All rights reserved.</span></span>
+        <span data-i18n="footer.tagline">Made for analysts, developers &amp; QA.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="i18n.js" defer></script>
+</body>
+</html>
