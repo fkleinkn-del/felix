@@ -13,11 +13,13 @@
       'nav.features'     : 'Features',
       'nav.how'          : 'How it works',
       'nav.privacy'      : 'Privacy',
+      'nav.blog'         : 'Blog',
       'nav.cta'          : 'Add to Chrome',
       /* Footer */
       'footer.features'  : 'Features',
       'footer.how'       : 'How it works',
       'footer.privacy'   : 'Privacy',
+      'footer.blog'      : 'Blog',
       'footer.impressum' : 'Impressum',
       'footer.policy'    : 'Privacy Policy',
       'footer.tagline'   : 'Made for analysts, developers & QA.',
@@ -26,6 +28,17 @@
       'page.index'       : 'Felix Debugger - Real-time GA4 debugging.',
       'page.impressum'   : 'Legal Notice - Felix Debugger',
       'page.datenschutz' : 'Privacy Policy - Felix Debugger',
+      /* Blog */
+      'blog.eyebrow'     : 'Writing',
+      'blog.h1'          : 'Thoughts on tracking,<br />debugging & the web.',
+      'blog.lede'        : 'Articles about web analytics, data layer architecture, consent and the story behind building Felix Debugger. Published on Medium.',
+      'blog.t1'          : 'Web Analytics',
+      'blog.t2'          : 'GTM & GA4',
+      'blog.t3'          : 'Debugging',
+      'blog.t4'          : 'Privacy & Consent',
+      'blog.t5'          : 'Product & Story',
+      'blog.cta'         : 'Read on Medium',
+      'blog.note'        : 'Opens medium.com/@fkleinkn in a new tab.',
       /* Legal */
       'legal.back'       : '← Back to home',
       /* Hero */
@@ -103,11 +116,13 @@
       'nav.features'     : 'Features',
       'nav.how'          : 'Funktionsweise',
       'nav.privacy'      : 'Datenschutz',
+      'nav.blog'         : 'Blog',
       'nav.cta'          : 'Zu Chrome hinzufügen',
       /* Footer */
       'footer.features'  : 'Features',
       'footer.how'       : 'Funktionsweise',
       'footer.privacy'   : 'Datenschutz',
+      'footer.blog'      : 'Blog',
       'footer.impressum' : 'Impressum',
       'footer.policy'    : 'Datenschutzerklärung',
       'footer.tagline'   : 'Für Analysten, Entwickler & QA-Teams.',
@@ -116,6 +131,17 @@
       'page.index'       : 'Felix Debugger - GA4 Debugging in Echtzeit.',
       'page.impressum'   : 'Impressum - Felix Debugger',
       'page.datenschutz' : 'Datenschutzerklärung - Felix Debugger',
+      /* Blog */
+      'blog.eyebrow'     : 'Artikel',
+      'blog.h1'          : 'Gedanken zu Tracking,<br />Debugging & dem Web.',
+      'blog.lede'        : 'Artikel über Web Analytics, Datenschicht-Architektur, Consent und die Geschichte hinter Felix Debugger. Publiziert auf Medium.',
+      'blog.t1'          : 'Web Analytics',
+      'blog.t2'          : 'GTM & GA4',
+      'blog.t3'          : 'Debugging',
+      'blog.t4'          : 'Datenschutz & Consent',
+      'blog.t5'          : 'Produkt & Story',
+      'blog.cta'         : 'Auf Medium lesen',
+      'blog.note'        : 'Öffnet medium.com/@fkleinkn in einem neuen Tab.',
       /* Legal */
       'legal.back'       : '← Zurück zur Startseite',
       /* Hero */

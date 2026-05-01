@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://consent.cookiebot.com https://consentcdn.cookiebot.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: http://imgsct.cookiebot.com https://imgsct.cookiebot.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://region1.analytics.google.com https://stats.g.doubleclick.net https://consent.cookiebot.com https://consentcdn.cookiebot.com; frame-src 'self' https://www.googletagmanager.com https://consentcdn.cookiebot.com; base-uri 'none'; object-src 'none';" />
+  <title>Blog - Felix Debugger</title>
+  <meta name="description" content="Articles about web analytics, tracking, debugging and the story behind Felix Debugger. Written by Felix Kleinknecht on Medium." />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" type="image/svg+xml" href="assets/Felix_Debugger_F3L2_Light_512_transparent.svg" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Cookiebot -->
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="8647a094-df0e-4e92-948e-bc080b73de7f" data-blockingmode="auto" type="text/javascript"></script>
+  <!-- End Cookiebot -->
+
+  <!-- Google Consent Mode defaults -->
+  <script data-cookieconsent="ignore">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("consent", "default", {
+      ad_personalization: "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      analytics_storage: "denied",
+      functionality_storage: "denied",
+      personalization_storage: "denied",
+      security_storage: "granted",
+      wait_for_update: 500,
+    });
+    gtag("set", "ads_data_redaction", true);
+    gtag("set", "url_passthrough", false);
+  </script>
+  <!-- End Google Consent Mode defaults -->
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NXZNCG85');</script>
+  <!-- End Google Tag Manager -->
+
+  <style>
+    .blog-hero {
+      padding: clamp(140px, 16vw, 200px) 0 clamp(80px, 10vw, 120px);
+      text-align: center;
+    }
+    .blog-hero .eyebrow {
+      margin-bottom: 20px;
+    }
+    .blog-hero .headline {
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin: 0 auto 24px;
+      max-width: 700px;
+    }
+    .blog-hero .lede {
+      font-size: clamp(17px, 2vw, 20px);
+      color: var(--c-ink-soft);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto 48px;
+    }
+    .blog-topics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 52px;
+    }
+    .blog-topic {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 14px;
+      color: var(--c-ink-soft);
+      letter-spacing: 0.01em;
+    }
+    .blog-topic svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      color: var(--c-accent);
+    }
+    .blog-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 100px;
+      background: #fff;
+      color: #000;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+      text-decoration: none;
+    }
+    .blog-cta:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+    .blog-cta svg {
+      width: 20px;
+      height: 20px;
+    }
+    .blog-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      margin: 0 auto 48px;
+    }
+    .blog-note {
+      font-size: 13px;
+      color: var(--c-ink-mute);
+      margin-top: 20px;
+    }
+    @media (max-width: 600px) {
+      .blog-topics { gap: 8px; }
+      .blog-topic  { font-size: 13px; padding: 7px 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZNCG85"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <header class="nav" id="nav" role="banner">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__brand" aria-label="Felix Debugger">
+        <img src="assets/Felix_Debugger_F3L2_Light_512_transparent.svg" alt="" class="nav__logo" width="28" height="28" />
+        <span>Felix Debugger</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="index.html#features" data-i18n="nav.features">Features</a>
+        <a href="index.html#how" data-i18n="nav.how">How it works</a>
+        <a href="index.html#privacy" data-i18n="nav.privacy">Privacy</a>
+        <a href="blog.html" data-i18n="nav.blog">Blog</a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-toggle__btn" data-lang-btn="en">EN</button>
+        <span class="lang-toggle__sep" aria-hidden="true">|</span>
+        <button class="lang-toggle__btn" data-lang-btn="de">DE</button>
+      </div>
+      <a href="#" class="btn btn--small" data-store-link><span data-i18n="nav.cta">Add to Chrome</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-hero">
+      <div class="container narrow" style="text-align:center;">
+        <p class="eyebrow eyebrow--light reveal" data-i18n="blog.eyebrow">Writing</p>
+        <h1 class="headline reveal" data-i18n-html="blog.h1">Thoughts on tracking,<br />debugging & the web.</h1>
+        <p class="lede reveal" data-i18n="blog.lede">Articles about web analytics, data layer architecture, consent and the story behind building Felix Debugger. Published on Medium.</p>
+
+        <div class="blog-divider"></div>
+
+        <div class="blog-topics">
+          <span class="blog-topic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <span data-i18n="blog.t1">Web Analytics</span>
+          </span>
+          <span class="blog-topic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span data-i18n="blog.t2">GTM & GA4</span>
+          </span>
+          <span class="blog-topic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span data-i18n="blog.t3">Debugging</span>
+          </span>
+          <span class="blog-topic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></svg>
+            <span data-i18n="blog.t4">Privacy & Consent</span>
+          </span>
+          <span class="blog-topic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span data-i18n="blog.t5">Product & Story</span>
+          </span>
+        </div>
+
+        <a href="https://medium.com/@fkleinkn" target="_blank" rel="noopener noreferrer" class="blog-cta">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+          <span data-i18n="blog.cta">Read on Medium</span>
+        </a>
+        <p class="blog-note" data-i18n="blog.note">Opens medium.com/@fkleinkn in a new tab.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__top">
+        <a href="index.html" class="nav__brand nav__brand--footer">
+          <img src="assets/Felix_Debugger_F3_Dark_512_transparent.svg" alt="" class="nav__logo" width="24" height="24" />
+          <span>Felix Debugger</span>
+        </a>
+        <nav class="footer__nav" aria-label="Footer">
+          <a href="index.html#features" data-i18n="footer.features">Features</a>
+          <a href="index.html#privacy" data-i18n="footer.privacy">Privacy</a>
+          <a href="blog.html" data-i18n="footer.blog">Blog</a>
+          <a href="impressum.html" data-i18n="footer.impressum">Impressum</a>
+          <a href="datenschutz.html" data-i18n="footer.policy">Privacy Policy</a>
+        </nav>
+      </div>
+      <div class="footer__base">
+        <span>© <span id="year"></span> <span data-i18n="footer.rights">Felix Debugger. All rights reserved.</span></span>
+        <span data-i18n="footer.tagline">Made for analysts, developers &amp; QA.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="i18n.js" defer></script>
+</body>
+</html>
