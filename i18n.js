@@ -37,6 +37,7 @@
       'blog.t3'          : 'Debugging',
       'blog.t4'          : 'Privacy & Consent',
       'blog.t5'          : 'Product & Story',
+      'blog.prereq'      : 'All articles are hosted on Medium. Click below to browse the full archive.',
       'blog.cta'         : 'Read on Medium',
       'blog.note'        : 'Opens medium.com/@fkleinkn in a new tab.',
       /* Legal */
@@ -140,6 +141,7 @@
       'blog.t3'          : 'Debugging',
       'blog.t4'          : 'Datenschutz & Consent',
       'blog.t5'          : 'Produkt & Story',
+      'blog.prereq'      : 'Alle Artikel sind auf Medium veröffentlicht. Klick unten um das vollständige Archiv zu sehen.',
       'blog.cta'         : 'Auf Medium lesen',
       'blog.note'        : 'Öffnet medium.com/@fkleinkn in einem neuen Tab.',
       /* Legal */
